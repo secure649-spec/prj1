@@ -1,0 +1,619 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+.gv-root {
+  --navy: #101B33;
+  --navy-card: #182747;
+  --navy-line: #33456e;
+  --gold: #E8B44C;
+  --gold-dim: #C99A3E;
+  --gold-glow: rgba(232,180,76,0.18);
+  --cream: #F4F1E8;
+  --sage: #7C9A92;
+  --red: #B5615B;
+  --font-display: 'Noto Serif KR', serif;
+  --font-body: 'Noto Sans KR', sans-serif;
+
+  background: var(--navy);
+  color: var(--cream);
+  font-family: var(--font-body);
+  min-height: 100%;
+  padding: 28px 16px 60px;
+  box-sizing: border-box;
+}
+.gv-root * { box-sizing: border-box; }
+.gv-wrap { max-width: 780px; margin: 0 auto; }
+
+/* header */
+.gv-header {
+  position: relative;
+  border: 1px solid var(--navy-line);
+  background: linear-gradient(160deg, var(--navy-card), var(--navy));
+  border-radius: 14px;
+  padding: 30px 26px 24px;
+  margin-bottom: 22px;
+  overflow: hidden;
+}
+.gv-ticket-no {
+  position: absolute;
+  top: 16px; right: 18px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  padding: 4px 10px;
+  border-radius: 999px;
+  opacity: 0.9;
+}
+.gv-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  color: var(--sage);
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+.gv-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 1.3;
+  margin: 0 0 8px;
+  color: var(--cream);
+}
+.gv-sub {
+  font-size: 14px;
+  color: #C9CBD8;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* tabs */
+.gv-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--navy-line);
+}
+.gv-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #9AA1B8;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 8px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+}
+.gv-tab.active { color: var(--gold); border-color: var(--gold); }
+.gv-tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* generic card */
+.gv-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-line);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.gv-card h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  margin: 0 0 12px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.gv-field { margin-bottom: 12px; }
+.gv-field label {
+  display: block;
+  font-size: 12px;
+  color: #B7BBD0;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.gv-input, .gv-textarea {
+  width: 100%;
+  background: var(--navy);
+  border: 1px solid var(--navy-line);
+  color: var(--cream);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+.gv-input:focus, .gv-textarea:focus, .gv-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+.gv-textarea { resize: vertical; min-height: 56px; }
+.gv-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.gv-row > * { flex: 1; min-width: 160px; }
+
+.gv-btn {
+  background: var(--gold);
+  color: #1A1300;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: filter .12s ease, transform .06s ease;
+}
+.gv-btn:hover { filter: brightness(1.08); }
+.gv-btn:active { transform: translateY(1px); }
+.gv-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.gv-btn-ghost {
+  background: transparent;
+  border: 1px solid var(--navy-line);
+  color: var(--cream);
+}
+.gv-btn-danger {
+  background: transparent;
+  border: 1px solid var(--red);
+  color: var(--red);
+}
+.gv-btn-cta {
+  width: 100%;
+  background: var(--red);
+  color: var(--cream);
+  font-size: 16px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(181,97,91,0.35);
+}
+.gv-btn-cta:hover { filter: brightness(1.1); background: var(--red); }
+
+.gv-banner {
+  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  border: 1px solid var(--gold-dim);
+  background: var(--gold-glow);
+  color: var(--gold);
+}
+.gv-banner.error { border-color: var(--red); background: rgba(181,97,91,0.15); color: #E8A6A1; }
+.gv-banner.info { border-color: var(--navy-line); background: transparent; color: #B7BBD0; }
+
+/* ticket stub */
+.gv-stub {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  background: var(--navy-card);
+  border: 1px solid var(--navy-line);
+  border-radius: 12px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.gv-stub.mine { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold) inset; }
+.gv-stub-main { flex: 1; padding: 16px 18px; min-width: 0; }
+.gv-stub-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--cream);
+  margin: 0 0 4px;
+  word-break: break-word;
+}
+.gv-stub-desc { font-size: 13px; color: #ABB0C4; margin: 0 0 8px; line-height: 1.5; word-break: break-word; }
+.gv-stub-meta { font-size: 11px; color: #7A7F98; letter-spacing: 0.02em; }
+.gv-stub-divider {
+  width: 0;
+  border-left: 2px dashed var(--navy-line);
+  position: relative;
+}
+.gv-stub-divider::before, .gv-stub-divider::after {
+  content: '';
+  position: absolute;
+  left: -9px;
+  width: 18px; height: 18px;
+  background: var(--navy);
+  border-radius: 50%;
+}
+.gv-stub-divider::before { top: -9px; }
+.gv-stub-divider::after { bottom: -9px; }
+.gv-stub-stamp {
+  width: 118px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 10px;
+}
+.gv-stamp-count {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+}
+.gv-stamp-label { font-size: 10px; color: #7A7F98; letter-spacing: 0.1em; }
+.gv-vote-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  border-radius: 999px;
+  padding: 7px 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.gv-vote-btn.voted { background: var(--gold); color: #1A1300; border-color: var(--gold); }
+.gv-vote-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* admin bars */
+.gv-bar-row { margin-bottom: 14px; }
+.gv-bar-top { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; }
+.gv-bar-name { font-weight: 700; color: var(--cream); }
+.gv-bar-count { color: var(--gold); font-weight: 700; }
+.gv-bar-track { height: 10px; background: var(--navy); border-radius: 999px; overflow: hidden; border: 1px solid var(--navy-line); }
+.gv-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dim), var(--gold)); }
+
+.gv-empty {
+  text-align: center;
+  padding: 30px 16px;
+  color: #7A7F98;
+  font-size: 13px;
+  border: 1px dashed var(--navy-line);
+  border-radius: 12px;
+}
+.gv-stats { display: flex; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+.gv-stat { flex: 1; min-width: 120px; background: var(--navy-card); border: 1px solid var(--navy-line); border-radius: 10px; padding: 14px 16px; }
+.gv-stat-num { font-family: var(--font-display); font-size: 24px; font-weight: 900; color: var(--gold); }
+.gv-stat-label { font-size: 11px; color: #9AA1B8; margin-top: 2px; }
+
+.gv-lock { max-width: 320px; margin: 40px auto; text-align: center; }
+.gv-lock .gv-input { text-align: center; letter-spacing: 0.2em; }
+
+@media (max-width: 480px) {
+  .gv-title { font-size: 24px; }
+  .gv-stub { flex-direction: column; }
+  .gv-stub-divider { display: none; }
+  .gv-stub-stamp { width: 100%; flex-direction: row; justify-content: space-between; padding: 10px 16px 16px; }
+  .gv-vote-btn { width: auto; padding: 8px 14px; }
+}
+</style>
+
+<div class="gv-root">
+  <div class="gv-wrap">
+    <div class="gv-header">
+      <div class="gv-ticket-no" id="gv-ticket-no">NO. ----</div>
+      <p class="gv-eyebrow">COMPANY ANNIVERSARY · GIFT BALLOT</p>
+      <h1 class="gv-title">창립기념일 선물, 함께 골라요</h1>
+      <p class="gv-sub">받고 싶은 선물을 제안하고, 사번으로 한 표를 행사하세요. 한 사번당 투표는 하나만 반영되며, 언제든 다른 선물로 바꿀 수 있어요.</p>
+    </div>
+
+    <div class="gv-tabs">
+      <button class="gv-tab active" id="gv-tab-vote" onclick="gvSwitchTab('vote')">제안 &amp; 투표</button>
+      <button class="gv-tab" id="gv-tab-admin" onclick="gvSwitchTab('admin')">관리자</button>
+    </div>
+
+    <div id="gv-panel-vote"></div>
+    <div id="gv-panel-admin" style="display:none;"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const ADMIN_CODE = "1234"; // 관리자 접속 코드 - 실제 사용 전 변경 권장
+
+  let state = {
+    tab: 'vote',
+    employeeId: '',
+    suggestions: [],
+    myVote: null,
+    loading: true,
+    banner: null, // {type, text}
+    adminUnlocked: false,
+    adminLoading: false,
+    adminError: '',
+    voteCounts: {},
+    totalVotes: 0,
+  };
+
+  function setState(patch){ Object.assign(state, patch); render(); }
+
+  function escapeHtml(s){
+    return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  async function loadSuggestions(){
+    try {
+      const res = await window.storage.get('suggestions', true);
+      return res && res.value ? JSON.parse(res.value) : [];
+    } catch (e) { return []; }
+  }
+  async function saveSuggestions(arr){
+    await window.storage.set('suggestions', JSON.stringify(arr), true);
+  }
+  async function loadMyVote(empId){
+    if (!empId) return null;
+    try {
+      const res = await window.storage.get('vote:' + empId, true);
+      return res ? res.value : null;
+    } catch (e) { return null; }
+  }
+  async function castVote(empId, suggestionId){
+    await window.storage.set('vote:' + empId, suggestionId, true);
+  }
+  async function loadAllVotes(){
+    const listRes = await window.storage.list('vote:', true);
+    const keys = (listRes && listRes.keys) ? listRes.keys : [];
+    const counts = {};
+    let total = 0;
+    for (const k of keys) {
+      try {
+        const r = await window.storage.get(k, true);
+        if (r && r.value) {
+          counts[r.value] = (counts[r.value] || 0) + 1;
+          total++;
+        }
+      } catch (e) {}
+    }
+    return { counts, total };
+  }
+
+  async function refreshSuggestions(){
+    const list = await loadSuggestions();
+    setState({ suggestions: list, loading: false });
+  }
+
+  async function init(){
+    document.getElementById('gv-ticket-no').textContent = 'NO. ' + new Date().getFullYear();
+    await refreshSuggestions();
+  }
+
+  // ---------- actions ----------
+  window.gvSwitchTab = function(tab){
+    setState({ tab });
+  };
+
+  window.gvSetEmployeeId = async function(val){
+    state.employeeId = val.trim();
+    if (state.employeeId) {
+      const v = await loadMyVote(state.employeeId);
+      setState({ myVote: v });
+    } else {
+      setState({ myVote: null });
+    }
+  };
+
+  window.gvSubmitSuggestion = async function(){
+    const nameInput = document.getElementById('gv-new-name');
+    const descInput = document.getElementById('gv-new-desc');
+    const name = nameInput.value.trim();
+    const desc = descInput.value.trim();
+
+    if (!state.employeeId) {
+      setState({ banner: { type: 'error', text: '먼저 사번을 입력해주세요.' } });
+      return;
+    }
+    if (!name) {
+      setState({ banner: { type: 'error', text: '선물 이름을 입력해주세요.' } });
+      return;
+    }
+    const list = await loadSuggestions();
+    const dup = list.find(s => s.name.trim().toLowerCase() === name.toLowerCase());
+    if (dup) {
+      setState({ banner: { type: 'error', text: '이미 등록된 선물이에요. 목록에서 투표해주세요.' } });
+      return;
+    }
+    list.push({
+      id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+      name, desc,
+      proposedBy: state.employeeId,
+      createdAt: new Date().toISOString(),
+    });
+    await saveSuggestions(list);
+    nameInput.value = '';
+    descInput.value = '';
+    setState({ suggestions: list, banner: { type: 'info', text: '선물 제안이 등록되었습니다.' } });
+  };
+
+  window.gvVote = async function(suggestionId){
+    if (!state.employeeId) {
+      setState({ banner: { type: 'error', text: '먼저 사번을 입력해주세요.' } });
+      return;
+    }
+    if (state.myVote === suggestionId) return;
+    await castVote(state.employeeId, suggestionId);
+    setState({ myVote: suggestionId, banner: { type: 'info', text: '투표가 반영되었습니다.' } });
+  };
+
+  window.gvAdminUnlock = async function(){
+    const input = document.getElementById('gv-admin-code');
+    if (input.value === ADMIN_CODE) {
+      setState({ adminUnlocked: true, adminError: '' });
+      await gvRefreshAdmin();
+    } else {
+      setState({ adminError: '코드가 올바르지 않습니다.' });
+    }
+  };
+
+  window.gvRefreshAdmin = async function(){
+    setState({ adminLoading: true });
+    const [list, voteData] = await Promise.all([loadSuggestions(), loadAllVotes()]);
+    setState({ suggestions: list, voteCounts: voteData.counts, totalVotes: voteData.total, adminLoading: false });
+  };
+
+  window.gvExportCsv = function(){
+    const rows = [['순위','선물명','제안자 사번','득표수','설명']];
+    const ranked = state.suggestions
+      .map(s => ({ ...s, count: state.voteCounts[s.id] || 0 }))
+      .sort((a,b) => b.count - a.count);
+    ranked.forEach((s, i) => {
+      rows.push([i+1, s.name, s.proposedBy, s.count, (s.desc||'').replace(/\n/g,' ')]);
+    });
+    const csv = '\uFEFF' + rows.map(r => r.map(cell => {
+      const v = String(cell ?? '');
+      return /[",\n]/.test(v) ? '"' + v.replace(/"/g,'""') + '"' : v;
+    }).join(',')).join('\r\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '창립기념일_선물투표_결과_' + new Date().toISOString().slice(0,10) + '.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  window.gvResetAll = async function(){
+    if (!confirm('모든 제안과 투표 기록이 삭제됩니다. 계속할까요?')) return;
+    if (!confirm('되돌릴 수 없습니다. 정말 초기화할까요?')) return;
+    const list = await loadSuggestions();
+    await saveSuggestions([]);
+    const listRes = await window.storage.list('vote:', true);
+    const keys = (listRes && listRes.keys) ? listRes.keys : [];
+    for (const k of keys) { try { await window.storage.delete(k, true); } catch(e){} }
+    await gvRefreshAdmin();
+    setState({ banner: { type: 'info', text: '초기화되었습니다.' } });
+  };
+
+  // ---------- render ----------
+  function renderVotePanel(){
+    const el = document.getElementById('gv-panel-vote');
+    if (state.loading) {
+      el.innerHTML = '<div class="gv-empty">불러오는 중입니다…</div>';
+      return;
+    }
+    const bannerHtml = state.banner
+      ? `<div class="gv-banner ${state.banner.type}">${escapeHtml(state.banner.text)}</div>` : '';
+
+    const ranked = [...state.suggestions].sort((a,b) => {
+      // no live counts here to keep vote tab light; keep insertion order (oldest first)
+      return new Date(a.createdAt) - new Date(b.createdAt);
+    });
+
+    const myVoteName = state.myVote
+      ? (state.suggestions.find(s => s.id === state.myVote)?.name || null)
+      : null;
+
+    el.innerHTML = `
+      ${bannerHtml}
+      <div class="gv-card">
+        <h3>사번 확인</h3>
+        <div class="gv-field">
+          <label for="gv-emp-id">사번</label>
+          <input class="gv-input" id="gv-emp-id" placeholder="예: 20231234" value="${escapeHtml(state.employeeId)}" />
+        </div>
+        ${myVoteName ? `<div class="gv-banner">현재 <b>${escapeHtml(myVoteName)}</b>에 투표 중이에요. 다른 항목을 선택하면 자동으로 바뀝니다.</div>` : ''}
+      </div>
+
+      <div class="gv-card">
+        <h3>선물 제안하기</h3>
+        <div class="gv-field">
+          <label for="gv-new-name">선물 이름</label>
+          <input class="gv-input" id="gv-new-name" placeholder="예: 무선 이어폰" />
+        </div>
+        <div class="gv-field">
+          <label for="gv-new-desc">설명 (선택)</label>
+          <textarea class="gv-textarea" id="gv-new-desc" placeholder="브랜드, 색상 등 원하는 옵션을 적어주세요"></textarea>
+        </div>
+        <button class="gv-btn gv-btn-cta" onclick="gvSubmitSuggestion()">제안 등록하기</button>
+      </div>
+
+      <div>
+        ${ranked.length === 0
+          ? '<div class="gv-empty">아직 등록된 제안이 없습니다. 첫 번째 제안을 남겨보세요.</div>'
+          : ranked.map(s => renderStub(s)).join('')}
+      </div>
+    `;
+
+    document.getElementById('gv-emp-id').addEventListener('change', e => gvSetEmployeeId(e.target.value));
+    document.getElementById('gv-emp-id').addEventListener('blur', e => gvSetEmployeeId(e.target.value));
+  }
+
+  function renderStub(s){
+    const isMine = state.myVote === s.id;
+    return `
+      <div class="gv-stub ${isMine ? 'mine' : ''}">
+        <div class="gv-stub-main">
+          <p class="gv-stub-name">${escapeHtml(s.name)}</p>
+          ${s.desc ? `<p class="gv-stub-desc">${escapeHtml(s.desc)}</p>` : ''}
+          <p class="gv-stub-meta">제안자 ${escapeHtml(s.proposedBy)}</p>
+        </div>
+        <div class="gv-stub-divider"></div>
+        <div class="gv-stub-stamp">
+          <button class="gv-vote-btn ${isMine ? 'voted' : ''}" onclick="gvVote('${s.id}')" ${isMine ? 'disabled' : ''}>
+            ${isMine ? '투표 완료 ✓' : '투표하기'}
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderAdminPanel(){
+    const el = document.getElementById('gv-panel-admin');
+    if (!state.adminUnlocked) {
+      el.innerHTML = `
+        <div class="gv-lock gv-card">
+          <h3 style="text-align:center;">관리자 코드 입력</h3>
+          <div class="gv-field">
+            <input class="gv-input" id="gv-admin-code" type="password" placeholder="코드" />
+          </div>
+          ${state.adminError ? `<div class="gv-banner error">${escapeHtml(state.adminError)}</div>` : ''}
+          <button class="gv-btn" style="width:100%;" onclick="gvAdminUnlock()">확인</button>
+        </div>
+      `;
+      return;
+    }
+    if (state.adminLoading) {
+      el.innerHTML = '<div class="gv-empty">집계 중입니다…</div>';
+      return;
+    }
+    const ranked = state.suggestions
+      .map(s => ({ ...s, count: state.voteCounts[s.id] || 0 }))
+      .sort((a,b) => b.count - a.count);
+    const maxCount = ranked.length ? Math.max(...ranked.map(s => s.count), 1) : 1;
+
+    el.innerHTML = `
+      <div class="gv-stats">
+        <div class="gv-stat"><div class="gv-stat-num">${state.suggestions.length}</div><div class="gv-stat-label">등록된 제안</div></div>
+        <div class="gv-stat"><div class="gv-stat-num">${state.totalVotes}</div><div class="gv-stat-label">누적 투표 수</div></div>
+      </div>
+
+      <div class="gv-card">
+        <div class="gv-row" style="margin-bottom:16px;">
+          <button class="gv-btn" onclick="gvExportCsv()">CSV로 내보내기</button>
+          <button class="gv-btn gv-btn-ghost" onclick="gvRefreshAdmin()">새로고침</button>
+          <button class="gv-btn gv-btn-danger" onclick="gvResetAll()">전체 초기화</button>
+        </div>
+        ${ranked.length === 0
+          ? '<div class="gv-empty">아직 데이터가 없습니다.</div>'
+          : ranked.map(s => `
+            <div class="gv-bar-row">
+              <div class="gv-bar-top">
+                <span class="gv-bar-name">${escapeHtml(s.name)}</span>
+                <span class="gv-bar-count">${s.count}표</span>
+              </div>
+              <div class="gv-bar-track"><div class="gv-bar-fill" style="width:${(s.count / maxCount) * 100}%;"></div></div>
+            </div>
+          `).join('')}
+      </div>
+    `;
+  }
+
+  function render(){
+    document.getElementById('gv-tab-vote').className = 'gv-tab' + (state.tab === 'vote' ? ' active' : '');
+    document.getElementById('gv-tab-admin').className = 'gv-tab' + (state.tab === 'admin' ? ' active' : '');
+    document.getElementById('gv-panel-vote').style.display = state.tab === 'vote' ? '' : 'none';
+    document.getElementById('gv-panel-admin').style.display = state.tab === 'admin' ? '' : 'none';
+    renderVotePanel();
+    renderAdminPanel();
+  }
+
+  init();
+  render();
+})();
+</script>
