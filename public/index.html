@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>창립기념일 선물 투표</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="gv-root">
+    <div class="gv-wrap">
+      <div class="gv-header">
+        <div class="gv-ticket-no" id="gv-ticket-no">NO. ----</div>
+        <p class="gv-eyebrow">COMPANY ANNIVERSARY · GIFT BALLOT</p>
+        <h1 class="gv-title">창립기념일 선물, 함께 골라요</h1>
+        <p class="gv-sub">받고 싶은 선물을 제안하고, 사번으로 한 표를 행사하세요. 한 사번당 투표는 하나만 반영되며, 언제든 다른 선물로 바꿀 수 있어요.</p>
+      </div>
+
+      <div class="gv-tabs">
+        <button class="gv-tab active" id="gv-tab-vote" onclick="gvSwitchTab('vote')">제안 &amp; 투표</button>
+        <button class="gv-tab" id="gv-tab-admin" onclick="gvSwitchTab('admin')">관리자</button>
+      </div>
+
+      <div id="gv-panel-vote"></div>
+      <div id="gv-panel-admin" style="display:none;"></div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
